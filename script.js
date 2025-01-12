@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 let draggedItem = null;
 
-// 드래그 시작 시 호출되는 함수
+
 function startDrag(event) {
   draggedItem = event.target;  // 드래그된 요소를 추적
   event.dataTransfer.setData("text", event.target.id);  // 드래그 아이템의 ID 설정
