@@ -1,0 +1,146 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+  padding-top: 100px; /* 웹페이지 맨 위 여백 추가 */
+}
+
+#logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 150px; /* 로고 크기 조정 */
+}
+
+#planet-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  animation: spin 10s infinite linear;
+  cursor: pointer;
+}
+
+#planet {
+  width: 400px;
+  height: 400px;
+  background: url('image/planet.svg') no-repeat center center;
+  background-size: cover;
+  border-radius: 0%;
+  transition: transform 1s ease-in-out;
+}
+
+#creature-container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* 기본 6x6 배열 */
+  gap: 40px; /* 이미지들 간의 간격 */
+  max-width: 100%;
+  max-height: 100%;
+  overflow: visible; /* SVG가 커져도 잘리지 않도록 설정 */
+  padding: 10px;
+  padding-left: 40px; /* 왼쪽 여백 추가 */
+  
+}
+
+
+
+.creature {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  animation: growShrink 2s infinite ease-in-out;
+  overflow: visible; /* 커질 때 잘리지 않도록 */
+  cursor: pointer; /* 드래그할 때 커서 변경 */
+}
+
+/* SVG 이미지 크기 동적으로 변경 */
+.creature svg {
+  width: 100%;
+  height: 100%;
+  transform-origin: center center; /* SVG의 중심에서 크기가 커지도록 설정 */
+  transition: transform 0.5s ease; /* 크기 변화 애니메이션 */
+}
+
+/* 애니메이션을 독립적으로 시작하도록 delay 설정 */
+.creature:nth-child(1) { animation-delay: 0s; }
+.creature:nth-child(2) { animation-delay: 0.5s; }
+.creature:nth-child(3) { animation-delay: 1s; }
+.creature:nth-child(4) { animation-delay: 1.5s; }
+.creature:nth-child(5) { animation-delay: 2s; }
+.creature:nth-child(6) { animation-delay: 2.5s; }
+.creature:nth-child(7) { animation-delay: 3s; }
+.creature:nth-child(8) { animation-delay: 3.5s; }
+.creature:nth-child(9) { animation-delay: 4s; }
+.creature:nth-child(10) { animation-delay: 4.5s; }
+.creature:nth-child(11) { animation-delay: 5s; }
+.creature:nth-child(12) { animation-delay: 5.5s; }
+.creature:nth-child(13) { animation-delay: 6s; }
+.creature:nth-child(14) { animation-delay: 6.5s; }
+.creature:nth-child(15) { animation-delay: 7s; }
+.creature:nth-child(16) { animation-delay: 7.5s; }
+.creature:nth-child(17) { animation-delay: 8s; }
+.creature:nth-child(18) { animation-delay: 8.5s; }
+.creature:nth-child(19) { animation-delay: 9s; }
+.creature:nth-child(20) { animation-delay: 9.5s; }
+.creature:nth-child(21) { animation-delay: 10s; }
+.creature:nth-child(22) { animation-delay: 10.5s; }
+.creature:nth-child(23) { animation-delay: 11s; }
+.creature:nth-child(24) { animation-delay: 11.5s; }
+.creature:nth-child(25) { animation-delay: 12s; }
+.creature:nth-child(26) { animation-delay: 12.5s; }
+.creature:nth-child(27) { animation-delay: 13s; }
+.creature:nth-child(28) { animation-delay: 13.5s; }
+.creature:nth-child(29) { animation-delay: 14s; }
+.creature:nth-child(30) { animation-delay: 14.5s; }
+.creature:nth-child(31) { animation-delay: 15s; }
+.creature:nth-child(32) { animation-delay: 15.5s; }
+.creature:nth-child(33) { animation-delay: 16s; }
+.creature:nth-child(34) { animation-delay: 16.5s; }
+.creature:nth-child(35) { animation-delay: 17s; }
+.creature:nth-child(36) { animation-delay: 17.5s; }
+
+/* 이미지 스타일 */
+.creature img {
+  width: 100%; /* 이미지가 부모 요소의 너비를 꽉 채우게 */
+  height: 100%; /* 이미지가 부모 요소의 높이를 꽉 채우게 */
+  object-fit: contain; /* 이미지 비율 유지하면서 꽉 차게 */
+  max-width: 80%; /* 이미지 크기를 부모 요소에 비례하여 축소 */
+  max-height: 80%; /* 이미지 크기를 부모 요소에 비례하여 축소 */
+  margin: 0 auto; /* 이미지가 부모 요소 안에서 중앙에 배치되도록 설정 */
+  border-radius: 10px;
+}
+
+.creature[draggable="true"] {
+  cursor: grab; /* 드래그할 수 있는 요소는 grab 커서 표시 */
+}
+
+.creature[draggable="true"]:active {
+  cursor: grabbing; /* 드래그 중에는 grabbing 커서 표시 */
+}
+
+
+/* 모바일 비율에서 3x12 배열로 변경 */
+@media (max-width: 768px) {
+  #creature-container {
+    grid-template-columns: repeat(3, 1fr); /* 모바일에서 3개의 열 */
+    grid-template-rows: repeat(12, 1fr); /* 12개의 행으로 설정 */
+  }
+}
+
+/* 행성 회전 애니메이션 */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 커졌다가 작아지는 애니메이션 */
+@keyframes growShrink {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); } /* 20% 커짐 */
+  100% { transform: scale(1); }
+}
