@@ -12,9 +12,22 @@
   </a>
 
   <div id="planet-container">
-    <div id="planet"></div>
+    <div id="planet" onclick="expandPlanet()"></div>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    // 행성 클릭 시 애니메이션 후 페이지 이동
+    function expandPlanet() {
+      const planet = document.getElementById('planet');
+      // 행성 크기 확장 애니메이션 시작
+      planet.style.transition = "transform 1s ease"; // 애니메이션을 부드럽게 하기 위해 transition 추가
+      planet.style.transform = 'scale(10)'; // 행성 크기 확대
+
+      // 애니메이션 후 페이지 이동
+      setTimeout(function() {
+        window.location.href = 'creatures.html'; // creatures.html로 페이지 이동
+      }, 800); // 애니메이션이 1초 후 끝나면 페이지 이동
+    }
+  </script>
 </body>
 </html>
